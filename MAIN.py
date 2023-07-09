@@ -6,13 +6,10 @@ from msp import invoke_method, get_session_id, ticket_header, Actor, connect_web
 import warnings
 
 
-
-# Définir les informations de connexion
 USERNAME = "*****"
 PASSWORD = "*****"
 SERVER = "FR"
 
-# Appeler la méthode de connexion et obtenir la réponse
 code, resp = invoke_method(
     SERVER,
     "MovieStarPlanet.WebService.User.AMFUserServiceWeb.Login",
@@ -33,7 +30,6 @@ if resp is None:
     print("La méthode d'authentification a renvoyé None. Vérifiez les paramètres d'authentification.")
     quit()
 
-# Vérifier si la connexion a réussi
 status = resp.get('loginStatus', {}).get('status')
 if status != "Success":
     print(f"Login failed, status: {status}")
